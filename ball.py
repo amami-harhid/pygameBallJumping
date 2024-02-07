@@ -1,5 +1,6 @@
 import pygame
 import random
+from mixer import *
 
 # class definition
 class Ball:
@@ -13,8 +14,9 @@ class Ball:
         self.speed = self.power
         self.moveDirection = 1 if random.uniform(0,1) > 0.5  else -1
         self.xMoveStep = 20
-        self.color = [ random.randint(50,100), random.randint(0,50), random.randint(0,50) ]
+        self.color = [ random.randint(50,250), random.randint(0,250), random.randint(0,250) ]
         self.width = screen.get_width()
+        self.sound = loadSound()
 
     # method 
     def draw(self, screen):
@@ -47,12 +49,11 @@ class Ball:
         width = screen.get_width()
         if self.y > 800:
             self.speed = self.power
+            self.sound.play()
         self.y -= self.speed
         self.speed -= 0.5
         if self.x < self.r or self.x > width -self.r*1.2:
-            #pass
             self.moveDirection *= -1
-            #print(self.xMoveStep)
         
         self.x += random.randint(0, self.xMoveStep) * self.moveDirection  
 

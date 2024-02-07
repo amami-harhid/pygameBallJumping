@@ -13,7 +13,8 @@ window_size = {
 
 
 pygame.init()
-soundPlay()
+loadBGM()
+musicPlay()
 
 screen = pygame.display.set_mode( (window_size['width'], window_size['height']) )
 pygame.display.set_caption('Jumping Ball!')
